@@ -1,0 +1,6 @@
+@TisCircuitsAPI_HostAddress = http://localhost:5098
+
+GET {{TisCircuitsAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
