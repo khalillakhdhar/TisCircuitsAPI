@@ -6,11 +6,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TisCircuitsAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TisCircuitsAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [AllowAnonymous]
     public class FormationController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
@@ -24,8 +26,11 @@ namespace TisCircuitsAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Formation>>> GetFormation()
         {
-            return await _context.Formation.ToListAsync();
+            return await _context.Formation
+                .Include(f => f.Details)
+                .ToListAsync();
         }
+
 
         // GET: api/Formation/5
         [HttpGet("{id}")]

@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
 
 namespace TisCircuitsAPI.Models;
 
 public partial class Fourniture
 {
     [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int id { get; set; }
 
     [StringLength(50)]
@@ -27,9 +25,14 @@ public partial class Fourniture
     [StringLength(50)]
     public string? etats { get; set; }
 
-    [StringLength(50)]
-    public string? type { get; set; }
+    // 🔄 Ce champ doit être de type int pour fonctionner comme FK
+    public int? TypeFournitureId { get; set; }
 
-    [InverseProperty("idNavigation")]
+    [ForeignKey("TypeFournitureId")]
     public virtual Type_Fourniture? Type_Fourniture { get; set; }
+
+    public int? MatiereId { get; set; }
+
+    [ForeignKey("MatiereId")]
+    public virtual Matiere? Matiere { get; set; }
 }

@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
 
 namespace TisCircuitsAPI.Models;
 
 public partial class Type_Fourniture
 {
     [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int id { get; set; }
 
     [StringLength(50)]
@@ -17,7 +15,10 @@ public partial class Type_Fourniture
     [StringLength(50)]
     public string? qte { get; set; }
 
-    [ForeignKey("id")]
+    // Supprimer la navigation inverse ici, sauf si tu veux la liste des fournitures par type
+    // Si tu veux la liste des fournitures par type :
     [InverseProperty("Type_Fourniture")]
-    public virtual Fourniture idNavigation { get; set; } = null!;
+    public virtual ICollection<Fourniture> Fournitures { get; set; } = new List<Fourniture>();
+
 }
+

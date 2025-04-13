@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 
 namespace TisCircuitsAPI.Models;
 
 public partial class Formation
 {
     [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int id { get; set; }
 
     [StringLength(100)]
@@ -25,12 +24,12 @@ public partial class Formation
     [StringLength(50)]
     public string? type { get; set; }
 
-    [StringLength(50)]
-    public string? details { get; set; }
+ 
 
     [InverseProperty("Id_formationNavigation")]
     public virtual ICollection<AccesFormation> AccesFormation { get; set; } = new List<AccesFormation>();
 
-    [InverseProperty("idNavigation")]
-    public virtual Details? Details { get; set; }
+    [InverseProperty("Formation")]
+    public virtual ICollection<Details> Details { get; set; } = new List<Details>();
+
 }

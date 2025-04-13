@@ -9,7 +9,6 @@ namespace TisCircuitsAPI.Models
         {
         }
 
-        // Vos DbSet correspondants aux tables SQL
         public virtual DbSet<AccesFormation> AccesFormation { get; set; }
         public virtual DbSet<Demande> Demande { get; set; }
         public virtual DbSet<DemandeEmp> DemandeEmp { get; set; }
@@ -20,10 +19,14 @@ namespace TisCircuitsAPI.Models
         public virtual DbSet<Service> Service { get; set; }
         public virtual DbSet<Type_Fourniture> Type_Fourniture { get; set; }
         public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<DemandeConge> DemandeConges { get; set; }
+
+
+        // ✅ Nouveau :
+        public virtual DbSet<Matiere> Matiere { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Configuration de vos entités ici, par exemple :
             modelBuilder.Entity<AccesFormation>(entity =>
             {
                 entity.HasOne(d => d.Id_formationNavigation).WithMany(p => p.AccesFormation)
@@ -40,7 +43,14 @@ namespace TisCircuitsAPI.Models
                     .HasConstraintName("FK__Demande__id_fich__60A75C0F");
             });
 
-            // Ajoutez ici les configurations pour les autres entités...
+            // ✅ Configuration relation Fourniture ↔ Matiere
+            modelBuilder.Entity<Fourniture>(entity =>
+            {
+                entity.HasOne(d => d.Matiere)
+                    .WithMany()
+                    .HasForeignKey(d => d.MatiereId)
+                    .HasConstraintName("FK_Fourniture_Matiere");
+            });
 
             OnModelCreatingPartial(modelBuilder);
         }

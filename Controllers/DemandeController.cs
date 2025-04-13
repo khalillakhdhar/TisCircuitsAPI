@@ -1,16 +1,14 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TisCircuitsAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TisCircuitsAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [AllowAnonymous]
     public class DemandeController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
@@ -20,88 +18,67 @@ namespace TisCircuitsAPI.Controllers
             _context = context;
         }
 
-        // GET: api/Demande
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Demande>>> GetDemande()
-        {
-            return await _context.Demande.ToListAsync();
-        }
+        public async Task<ActionResult<IEnumerable<Demande>>> GetDemande() =>
+            await _context.Demande.ToListAsync();
 
-        // GET: api/Demande/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Demande>> GetDemande(int id)
         {
             var demande = await _context.Demande.FindAsync(id);
-
-            if (demande == null)
-            {
-                return NotFound();
-            }
-
-            return demande;
+            return demande == null ? NotFound() : demande;
         }
 
-        // PUT: api/Demande/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutDemande(int id, Demande demande)
-        {
-            if (id != demande.id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(demande).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!DemandeExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        // POST: api/Demande
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Demande>> PostDemande(Demande demande)
         {
             _context.Demande.Add(demande);
-            await _context.SaveChangesAsync();
 
+            if (demande.etat == "Validée RH" && demande.id_fichier != null)
+            {
+                var fichier = await _context.DemandeEmp.FindAsync(demande.id_fichier);
+                var matiere = await _context.Matiere.FirstOrDefaultAsync(m => m.Nom == fichier.nom);
+
+                if (matiere != null && matiere.Quantite > 0)
+                {
+                    matiere.Quantite -= 1;
+                }
+            }
+
+            await _context.SaveChangesAsync();
             return CreatedAtAction("GetDemande", new { id = demande.id }, demande);
         }
 
-        // DELETE: api/Demande/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteDemande(int id)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutDemande(int id, Demande demande)
         {
-            var demande = await _context.Demande.FindAsync(id);
-            if (demande == null)
+            if (id != demande.id) return BadRequest();
+            _context.Entry(demande).State = EntityState.Modified;
+
+            if (demande.etat == "Validée RH" && demande.id_fichier != null)
             {
-                return NotFound();
+                var fichier = await _context.DemandeEmp.FindAsync(demande.id_fichier);
+                var matiere = await _context.Matiere.FirstOrDefaultAsync(m => m.Nom == fichier.nom);
+
+                if (matiere != null && matiere.Quantite > 0)
+                {
+                    matiere.Quantite -= 1;
+                }
             }
 
-            _context.Demande.Remove(demande);
             await _context.SaveChangesAsync();
-
             return NoContent();
         }
 
-        private bool DemandeExists(int id)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteDemande(int id)
         {
-            return _context.Demande.Any(e => e.id == id);
+            var item = await _context.Demande.FindAsync(id);
+            if (item == null) return NotFound();
+
+            _context.Demande.Remove(item);
+            await _context.SaveChangesAsync();
+            return NoContent();
         }
     }
 }

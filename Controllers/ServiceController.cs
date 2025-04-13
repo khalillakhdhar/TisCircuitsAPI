@@ -6,11 +6,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TisCircuitsAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TisCircuitsAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [AllowAnonymous]
     public class ServiceController : ControllerBase
     {
         private readonly ApplicationDbContext _context;

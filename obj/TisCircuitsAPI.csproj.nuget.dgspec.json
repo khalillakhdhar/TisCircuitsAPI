@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\accompagnement\\hr full stack app\\tisCircuitsAPI\\TisCircuitsAPI.csproj": {}
+    "E:\\accompagnement\\hr full stack app\\TisCircuitsAPI\\TisCircuitsAPI.csproj": {}
   },
   "projects": {
-    "E:\\accompagnement\\hr full stack app\\tisCircuitsAPI\\TisCircuitsAPI.csproj": {
+    "E:\\accompagnement\\hr full stack app\\TisCircuitsAPI\\TisCircuitsAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\accompagnement\\hr full stack app\\tisCircuitsAPI\\TisCircuitsAPI.csproj",
+        "projectUniqueName": "E:\\accompagnement\\hr full stack app\\TisCircuitsAPI\\TisCircuitsAPI.csproj",
         "projectName": "TisCircuitsAPI",
-        "projectPath": "E:\\accompagnement\\hr full stack app\\tisCircuitsAPI\\TisCircuitsAPI.csproj",
+        "projectPath": "E:\\accompagnement\\hr full stack app\\TisCircuitsAPI\\TisCircuitsAPI.csproj",
         "packagesPath": "C:\\Users\\khali\\.nuget\\packages\\",
-        "outputPath": "E:\\accompagnement\\hr full stack app\\tisCircuitsAPI\\obj\\",
+        "outputPath": "E:\\accompagnement\\hr full stack app\\TisCircuitsAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -50,6 +50,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.Negotiate": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[8.0.8, )"

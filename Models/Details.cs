@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 
 namespace TisCircuitsAPI.Models;
 
 public partial class Details
 {
     [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int id { get; set; }
 
     public DateOnly? date { get; set; }
@@ -16,7 +15,12 @@ public partial class Details
     [StringLength(50)]
     public string? description { get; set; }
 
-    [ForeignKey("id")]
+    public int FormationId { get; set; }
+
+    [ForeignKey("FormationId")]
     [InverseProperty("Details")]
-    public virtual Formation idNavigation { get; set; } = null!;
+    [JsonIgnore]
+    public virtual Formation? Formation { get; set; }
+
+
 }
