@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -28,6 +28,8 @@ namespace TisCircuitsAPI.Controllers
         {
             return await _context.Formation
                 .Include(f => f.Details)
+                .Include(f => f.Cours) // 👈 Ajout ici aussi
+
                 .ToListAsync();
         }
 
@@ -36,7 +38,10 @@ namespace TisCircuitsAPI.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Formation>> GetFormation(int id)
         {
-            var formation = await _context.Formation.FindAsync(id);
+            var formation = await _context.Formation
+                .Include(f => f.Details)
+                .Include(f => f.Cours) // 👈 Ajout important ici
+                .FirstOrDefaultAsync(f => f.id == id);
 
             if (formation == null)
             {
@@ -45,6 +50,7 @@ namespace TisCircuitsAPI.Controllers
 
             return formation;
         }
+
 
         // PUT: api/Formation/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754

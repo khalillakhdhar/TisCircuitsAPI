@@ -1,11 +1,58 @@
 {
   "Version": 1,
-  "Hash": "2hf1Q7HrG/PQ4/C6Ok4GQ1/DVful3GOOrD4+sJJY7gQ=",
+  "Hash": "yd3cbmRkAyKz8zXkMD4iVv5m4BNt/5sirONhYWbCEYg=",
   "Source": "TisCircuitsAPI",
   "BasePath": "_content/TisCircuitsAPI",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "TisCircuitsAPI\\wwwroot",
+      "Source": "TisCircuitsAPI",
+      "ContentRoot": "E:\\accompagnement\\hr full stack app\\TisCircuitsAPI\\wwwroot\\",
+      "BasePath": "_content/TisCircuitsAPI",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "E:\\accompagnement\\hr full stack app\\TisCircuitsAPI\\wwwroot\\cours\\7ba0e518-387b-41f9-a9c7-9038e8cb5163.pdf",
+      "SourceId": "TisCircuitsAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\accompagnement\\hr full stack app\\TisCircuitsAPI\\wwwroot\\",
+      "BasePath": "_content/TisCircuitsAPI",
+      "RelativePath": "cours/7ba0e518-387b-41f9-a9c7-9038e8cb5163.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\cours\\7ba0e518-387b-41f9-a9c7-9038e8cb5163.pdf"
+    },
+    {
+      "Identity": "E:\\accompagnement\\hr full stack app\\TisCircuitsAPI\\wwwroot\\cours\\f65a7073-2110-4db5-a2a7-a2dbf9ae4bbb.pdf",
+      "SourceId": "TisCircuitsAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\accompagnement\\hr full stack app\\TisCircuitsAPI\\wwwroot\\",
+      "BasePath": "_content/TisCircuitsAPI",
+      "RelativePath": "cours/f65a7073-2110-4db5-a2a7-a2dbf9ae4bbb.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\cours\\f65a7073-2110-4db5-a2a7-a2dbf9ae4bbb.pdf"
+    }
+  ]
 }

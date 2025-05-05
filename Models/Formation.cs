@@ -24,12 +24,11 @@ public partial class Formation
     [StringLength(50)]
     public string? type { get; set; }
 
- 
-
     [InverseProperty("Id_formationNavigation")]
     public virtual ICollection<AccesFormation> AccesFormation { get; set; } = new List<AccesFormation>();
 
     [InverseProperty("Formation")]
     public virtual ICollection<Details> Details { get; set; } = new List<Details>();
 
+    public List<Cours> Cours { get; set; } = new List<Cours>();
 }

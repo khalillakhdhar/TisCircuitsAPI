@@ -1,0 +1,29 @@
+{
+  "Files": [
+    {
+      "Id": "E:\\accompagnement\\hr full stack app\\TisCircuitsAPI\\wwwroot\\cours\\7ba0e518-387b-41f9-a9c7-9038e8cb5163.pdf",
+      "PackagePath": "staticwebassets\\cours\\7ba0e518-387b-41f9-a9c7-9038e8cb5163.pdf"
+    },
+    {
+      "Id": "E:\\accompagnement\\hr full stack app\\TisCircuitsAPI\\wwwroot\\cours\\f65a7073-2110-4db5-a2a7-a2dbf9ae4bbb.pdf",
+      "PackagePath": "staticwebassets\\cours\\f65a7073-2110-4db5-a2a7-a2dbf9ae4bbb.pdf"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.TisCircuitsAPI.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.TisCircuitsAPI.props",
+      "PackagePath": "build\\TisCircuitsAPI.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.TisCircuitsAPI.props",
+      "PackagePath": "buildMultiTargeting\\TisCircuitsAPI.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.TisCircuitsAPI.props",
+      "PackagePath": "buildTransitive\\TisCircuitsAPI.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

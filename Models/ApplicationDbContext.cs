@@ -20,6 +20,7 @@ namespace TisCircuitsAPI.Models
         public virtual DbSet<Type_Fourniture> Type_Fourniture { get; set; }
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<DemandeConge> DemandeConges { get; set; }
+        public DbSet<Cours> Cours { get; set; }
 
 
         // ✅ Nouveau :

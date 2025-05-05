@@ -45,6 +45,32 @@ namespace TisCircuitsAPI.Migrations
                     b.ToTable("AccesFormation");
                 });
 
+            modelBuilder.Entity("TisCircuitsAPI.Models.Cours", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("FormationId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Titre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UrlFichier")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FormationId");
+
+                    b.ToTable("Cours");
+                });
+
             modelBuilder.Entity("TisCircuitsAPI.Models.Demande", b =>
                 {
                     b.Property<int>("id")
@@ -399,6 +425,17 @@ namespace TisCircuitsAPI.Migrations
                     b.Navigation("Id_serviceNavigation");
                 });
 
+            modelBuilder.Entity("TisCircuitsAPI.Models.Cours", b =>
+                {
+                    b.HasOne("TisCircuitsAPI.Models.Formation", "Formation")
+                        .WithMany("Cours")
+                        .HasForeignKey("FormationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Formation");
+                });
+
             modelBuilder.Entity("TisCircuitsAPI.Models.Demande", b =>
                 {
                     b.HasOne("TisCircuitsAPI.Models.DemandeEmp", "id_fichierNavigation")
@@ -470,6 +507,8 @@ namespace TisCircuitsAPI.Migrations
             modelBuilder.Entity("TisCircuitsAPI.Models.Formation", b =>
                 {
                     b.Navigation("AccesFormation");
+
+                    b.Navigation("Cours");
 
                     b.Navigation("Details");
                 });

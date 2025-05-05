@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TisCircuitsAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2334e753bf77c3bbd6fe8f13ae49620534175185")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cdd0a9af2eadcf3f1cbca2ed305d0f1fbb1e969b")]
 [assembly: System.Reflection.AssemblyProductAttribute("TisCircuitsAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TisCircuitsAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

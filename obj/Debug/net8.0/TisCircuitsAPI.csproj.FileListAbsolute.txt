@@ -281,3 +281,4 @@ E:\accompagnement\hr full stack app\TisCircuitsAPI\obj\Debug\net8.0\refint\TisCi
 E:\accompagnement\hr full stack app\TisCircuitsAPI\obj\Debug\net8.0\TisCircuitsAPI.pdb
 E:\accompagnement\hr full stack app\TisCircuitsAPI\obj\Debug\net8.0\TisCircuitsAPI.genruntimeconfig.cache
 E:\accompagnement\hr full stack app\TisCircuitsAPI\obj\Debug\net8.0\ref\TisCircuitsAPI.dll
+E:\accompagnement\hr full stack app\TisCircuitsAPI\bin\Debug\net8.0\TisCircuitsAPI.staticwebassets.runtime.json

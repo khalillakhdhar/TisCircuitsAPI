@@ -57,7 +57,7 @@ app.UseCors("AllowAngularDev");
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
-
+app.UseStaticFiles();
 // Contrôleurs
 app.MapControllers();
 
