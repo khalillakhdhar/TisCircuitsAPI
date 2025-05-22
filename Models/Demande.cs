@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TisCircuitsAPI.Models;
 
-public partial class Demande
+public class Demande
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -33,4 +33,8 @@ public partial class Demande
     [ForeignKey("id_fichier")]
     [InverseProperty("Demande")]
     public virtual DemandeEmp? id_fichierNavigation { get; set; }
+
+    // Nouveau champ pour le type de la demande
+    [StringLength(50)]
+    public string? typeDemande { get; set; }  // Ajouté ici
 }

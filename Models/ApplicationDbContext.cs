@@ -21,6 +21,11 @@ namespace TisCircuitsAPI.Models
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<DemandeConge> DemandeConges { get; set; }
         public DbSet<Cours> Cours { get; set; }
+        public DbSet<Quiz> Quizzes { get; set; }
+        public DbSet<QuizQuestion> QuizQuestions { get; set; }
+        public DbSet<QuizOption> QuizOptions { get; set; }
+        public DbSet<QuizResult> QuizResults { get; set; }
+
 
 
         // ✅ Nouveau :
